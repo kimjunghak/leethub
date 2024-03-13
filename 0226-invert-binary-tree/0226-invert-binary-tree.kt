@@ -13,9 +13,8 @@ class Solution {
         if(root == null) return null
 
         val tempLeft = root.left
-        val tempRight = root.right
+        root.left = root.right
         root.right = tempLeft
-        root.left = tempRight
 
         invertTree(root.left)
         invertTree(root.right)
