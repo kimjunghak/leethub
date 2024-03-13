@@ -13,8 +13,8 @@ class Solution {
         if(root == null) return 0
         var count = 1
 
-        count += if(root.left != null) countNodes(root.left) else 0
-        count += if(root.right != null) countNodes(root.right) else 0
+        count += countNodes(root.left)
+        count += countNodes(root.right)
 
         return count
     }
