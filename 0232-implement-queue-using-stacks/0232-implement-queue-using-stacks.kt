@@ -1,21 +1,30 @@
 class MyQueue() {
 
-    private val list = mutableListOf<Int>()
-    
+    private val s1 = Stack<Int>()
+    private val s2 = Stack<Int>()
+
     fun push(x: Int) {
-        list.add(x)
+        s1.push(x)
     }
 
     fun pop(): Int {
-        return list.removeFirst()
+        s1Tos2()
+        return s2.pop()
     }
 
     fun peek(): Int {
-        return list.first()
+        s1Tos2()
+        return s2.peek()
     }
 
     fun empty(): Boolean {
-        return list.isEmpty()
+        return s1.isEmpty() && s2.isEmpty()
+    }
+
+    private fun s1Tos2() {
+        if (s2.isEmpty()) {
+            while (s1.isNotEmpty()) s2.push(s1.pop())
+        }
     }
 
 }
