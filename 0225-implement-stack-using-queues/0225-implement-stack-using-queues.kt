@@ -1,21 +1,21 @@
 class MyStack() {
 
-    private val list = mutableListOf<Int>()
-    
+    private val queue = LinkedList<Int>()
+
     fun push(x: Int) {
-        list.add(x)
+        queue.add(x)
     }
 
     fun pop(): Int {
-        return list.removeLast()
+        return queue.pollLast()
     }
 
     fun top(): Int {
-        return list[list.lastIndex]
+        return queue.peekLast()
     }
 
     fun empty(): Boolean {
-        return list.size == 0
+        return queue.isEmpty()
     }
 
 }
