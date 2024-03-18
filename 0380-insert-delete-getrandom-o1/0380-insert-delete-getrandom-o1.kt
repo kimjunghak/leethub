@@ -1,17 +1,28 @@
 class RandomizedSet() {
 
-    val set = HashSet<Int>()
-    
+    private val map = mutableMapOf<Int, Int>()
+    private val list = mutableListOf<Int>()
+
     fun insert(`val`: Int): Boolean {
-        return set.add(`val`)
+        return if(map.contains(`val`)) false
+        else {
+            list.add(`val`)
+            map[`val`] = list.size
+            true
+        }
     }
 
     fun remove(`val`: Int): Boolean {
-        return set.remove(`val`)
+        return if (!map.contains(`val`)) false
+        else {
+            list.remove(`val`)
+            map.remove(`val`)
+            true
+        }
     }
 
     fun getRandom(): Int {
-        return set.random()
+        return list.random()
     }
 
 }
