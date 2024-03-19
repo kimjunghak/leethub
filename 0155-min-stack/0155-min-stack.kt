@@ -7,15 +7,15 @@ class MinStack() {
     }
 
     fun pop() {
-        stack.removeAt(stack.size - 1)
+        stack.removeLast()
     }
 
     fun top(): Int {
-        return stack[stack.size - 1]
+        return stack.last()
     }
 
     fun getMin(): Int {
-        return stack.minOrNull()!!
+        return stack.min()
     }
 
 }
