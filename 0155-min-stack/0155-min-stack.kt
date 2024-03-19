@@ -1,13 +1,16 @@
 class MinStack() {
 
+    private val minQueue = PriorityQueue<Int>()
     private val stack = mutableListOf<Int>()
 
     fun push(`val`: Int) {
+        minQueue.offer(`val`)
         stack.add(`val`)
     }
 
     fun pop() {
-        stack.removeLast()
+        val last = stack.removeLast()
+        minQueue.remove(last)
     }
 
     fun top(): Int {
@@ -15,7 +18,7 @@ class MinStack() {
     }
 
     fun getMin(): Int {
-        return stack.min()
+        return minQueue.peek()
     }
 
 }
