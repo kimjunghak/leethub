@@ -11,21 +11,18 @@
 class Solution {
     fun sumNumbers(root: TreeNode?): Int {
         val list = mutableListOf<Int>()
-        val builder = StringBuilder()
-        order(root, list, builder)
+        order(root, list, 0)
         return list.sum()
     }
 
-    private fun order(node: TreeNode?, list: MutableList<Int>, builder: StringBuilder) {
+    private fun order(node: TreeNode?, list: MutableList<Int>, prevNum: Int) {
         if(node == null) return
-        builder.append(node.`val`)
+        val num = prevNum * 10 + node.`val`
         if(node.left == null && node.right == null) {
-            list.add(builder.toString().toInt())
-        } else {
-            if(node.left != null) order(node.left, list, builder)
-            if(node.right != null) order(node.right, list, builder)
+            list.add(num)
+            return
         }
-
-        builder.deleteCharAt(builder.length - 1)
+        if(node.left != null) order(node.left, list, num)
+        if(node.right != null) order(node.right, list, num)
     }
 }
